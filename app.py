@@ -11,19 +11,54 @@ from src.rectangle import Rectangle
 
 
 def initializeMap():
-    print(" "*5 + "Initialize Map" + " "*5)
-    print("-"*25)
-    print()
-    width = input("Please, choose the width: ")
-    height = input("Please, choose the height: ")
     
-    # Initialize the grid
-    gameMap = Rectangle(width, height)
-    
-    x = input("Please, select an origin (x-coordinate): ")
-    y = input("Now, select the y-coordinate: ")
-    
-    gameMap.createMap(x, y)
+    while (True):
+        # Display the options
+        print(" "*5 + "Initialize Map" + " "*5)
+        print("-"*25)
+        print()
+        
+        width = input("Please, choose the width: ")
+        try:
+            # Validate the input
+            width = int(width)
+        except ValueError:
+            print("\nInvalid input. Please, try agian.\n")
+            continue
+            
+        height = input("Please, choose the height: ")
+        
+        try:
+            # Validate the input
+            height = int(height)
+        except ValueError:
+            print("\nInvalid input. Please, try again.\n")
+            continue
+            
+        # Initialize the grid
+        gameMap = Rectangle(width, height)
+        
+        x = input("Please, select an origin x-coordinate: ")
+        try:
+            # Validate input
+            xVal = int(x)
+        except ValueError:
+            print("\nInvalid input. Please, try again.\n")
+            continue
+            
+        y = input("Now, select the y-coordinate: ")
+        try:
+            # validate input
+            yVal = int(y)           
+        except ValueError:
+            print("\nInvalid input. Please, try again.\n")
+            continue
+        
+        # Initialize the map
+        gameMap = gameMap.createMap(xVal, yVal)
+        break
+        
+    print("\nMap initialized.\n")
     
     return gameMap
 
@@ -47,14 +82,14 @@ def main():
         choice = input("Please, select your choice: ")
 
         if (choice == "1"):
-            print("you chose number 1.")
+            print("\nyou chose number 1.\n")
         elif (choice == "2"):
-            print("You chose number 2.")
+            print("\nYou chose number 2.\n")
         elif (choice == "3"):
-            print("Exiting game...")
+            print("\nExiting game...")
             break
         else:
-            print("Invalid input. Please, choose a number between 1 and 3.")
+            print("\nInvalid input. Please, choose a number between 1 and 3.\n")
             continue
         
     # Print a good by message
