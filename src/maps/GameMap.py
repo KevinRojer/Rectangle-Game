@@ -135,3 +135,5 @@ class GameMap:
                 print()
                 continue
             
+    def pointInMap(self):
+        return True
