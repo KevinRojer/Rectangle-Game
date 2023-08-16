@@ -8,6 +8,7 @@ Created on Mon Aug 14 16:07:04 2023
 
 
 from src.dataStructure.rectangle import Rectangle
+from src.tools.utility import validate_positive_integer_input
 
 
 class GameMap:
@@ -29,26 +30,23 @@ class GameMap:
         
         while (True):
             # Display the options
-            print()
-            print(" "*5 + "Set the Map" + " "*5)
-            print("-"*25)
-            print()
+            print("\n" + " " * 5 + "Set the Map" + " " * 5)
+            print("-" * 25 + "\n")
             
-            width = input("Please, choose the width: ")
+            width_input = input("Please, choose the width: ")
+            
             try:
-                # Validate the input
-                width = int(width)
-            except ValueError:
-                print("\nInvalid input. Please, try agian.\n")
-                continue
+                width = validate_positive_integer_input(width_input)
+            except ValueError as e:
+                print(f"\nInvalid input: {e}\n")
+                continue             
                 
-            height = input("Please, choose the height: ")
+            height_input = input("Please, choose the height: ")
             
             try:
-                # Validate the input
-                height = int(height)
-            except ValueError:
-                print("\nInvalid input. Please, try again.\n")
+                height = validate_positive_integer_input(height_input)
+            except ValueError as e:
+                print(f"\nInvalid input: {e}\n")
                 continue
                 
             # Initialize the grid
@@ -81,14 +79,12 @@ class GameMap:
         
         while (True):
             # Display the options
-            print()
-            print(" "*5 + "Changing Map" + " "*5)
-            print("-"*25)
+            print("\n" + " " * 5 + "Changing Map" + " " * 5)
+            print("-" * 25)
             print("1. Change the whole map")
             print("2. Change the height")
             print("3. Change the width")
-            print("4. Back")
-            print()
+            print("4. Back" + "\n")
             
             choice = input("Please, choose one of the options: ")
             try:
