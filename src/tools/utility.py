@@ -13,7 +13,7 @@ def validate_positive_integer_input(input_str):
 
     Parameters
     ----------
-    x : string
+    input_str : string
         A string representing console-based input for width or height.
 
     Returns
@@ -25,9 +25,10 @@ def validate_positive_integer_input(input_str):
     """
     try:
         dimension = int(input_str)
-        if dimension < 0:
-            raise ValueError("Negaative numbers are not allowed for dimensions.")
-        return dimension
     except ValueError:
-        print("Invalid input. Please, use numbers.")
-        return None
+        raise ValueError("Please, use integers.")
+    else:
+        if dimension < 0:
+            raise ValueError("Negative numbers are not allowed for dimensions.")
+        return dimension
+    
