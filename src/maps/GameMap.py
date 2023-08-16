@@ -86,10 +86,11 @@ class GameMap:
             print("3. Change the width")
             print("4. Back" + "\n")
             
-            choice = input("Please, choose one of the options: ")
+            choice_input = input("Please, choose one of the options: ")
+           
             try:
                 # Validate the input
-                choice = int(choice)
+                choice = int(choice_input)
             except ValueError:
                 print("\nInvalid input. Please, use numbers.\n")
                 continue
@@ -98,38 +99,43 @@ class GameMap:
                 self.initializeMap()
                 self.map.getMapSize()
                 break
+            
             elif (choice == 2):
-                height = input("Please, enter the new height: ")
+                height_input = input("Please, enter the new height: ")
+                
                 try:
                     # Validate the input
-                    height = int(height)
-                except ValueError:
-                    print("\nInvalid input. Please, use a number again.\n")
+                    height = validate_positive_integer_input(height_input)
+                    self.map.setHeight(height)
+                except ValueError as e:
+                    print(f"\nInvalid input: {e}\n")
                     continue
                 
-                self.map.setHeight(height)
-                print("Changed the height.")
+                
+                print("\nChanged the height.")
                 self.map.getMapSize()
                 break
+            
             elif (choice == 3):
-                width = input("Please, enter the new width: ")
+                width_input = input("Please, enter the new width: ")
+                
                 try:
                     # Validate the input
-                    width = int(width)
-                except ValueError:
-                    print("\nInvalid input. Please, use a number again.\n")
+                    width = validate_positive_integer_input(width_input)
+                    self.map.setWidth(width)
+                except ValueError as e:
+                    print(f"\nInvalid input: {e}\n")
                     continue
                 
-                self.map.setWidth(width)
-                print("Changed the width.")
+                print("\nChanged the width.")
                 self.map.getMapSize()
                 break
+            
             elif (choice == 4):
                 break
             else:
-                print("Please, choose a relevant number.")
-                print()
+                print("Please, choose a relevant number." + "\n")
                 continue
             
-    def pointInMap(self):
+    def pointInMap(self, point):
         return True
