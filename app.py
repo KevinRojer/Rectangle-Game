@@ -7,45 +7,38 @@ Created on Mon Jul 31 20:30:27 2023
 """
 
 
-from src.maps.GameMap import GameMap
+from src.game.gameManager import GameManager
+import src.tools.display as display
 
 
-def showMenu():
-    print()
-    print(" "*10 + "Menu" + " "*10)
-    print("-"*25)
-    print("1. Play Game")
-    print("2. Change Map")
-    print("3. Exit Game")
-    print()
 
 
 def main():
-    # initialize the game map
-    gameMap = GameMap()
-    gameMap.initializeMap()
+    # initialize the game manager & map
+    gameManager = GameManager()
+    gameManager.initialize_map()
     
     while (True):
-        showMenu()
+        display.show_main_menu()
         
-        choice = input("Please, select your choice: ")
+        choice = input("Please, make a selection: ")
 
         if (choice == "1"):
-            print("\nyou chose number 1.\n")
+            gameManager.select_target()
             continue
         elif (choice == "2"):
-            gameMap.changeMap()
+            gameManager.update_map()
             continue
         elif (choice == "3"):
-            print("\nExiting game...")
+            gameManager.exit_game()
             break
         else:
-            print("\nInvalid input. Please, choose a number between 1 and 3.\n")
+            display.show_invalid_main_menu()
             continue
         
         
     # Print a good by message
-    print("Thanks for playing. Bye, bye!")
+    display.show_exit_message()
         
 
 if __name__ == "__main__":
