@@ -49,27 +49,9 @@ class GameMap:
                 print(f"\nInvalid input: {e}\n")
                 continue
                 
-            # Initialize the grid
-            self.map = Rectangle(width, height)
-            
-            x = input("Please, select an origin x-coordinate: ")
-            try:
-                # Validate input
-                xVal = int(x)
-            except ValueError:
-                print("\nInvalid input. Please, try again.\n")
-                continue
-                
-            y = input("Now, select the y-coordinate: ")
-            try:
-                # validate input
-                yVal = int(y)           
-            except ValueError:
-                print("\nInvalid input. Please, try again.\n")
-                continue
-            
             # Initialize the map
-            self.map.createMap(xVal, yVal)
+            self.map = Rectangle(width, height)
+            self.map.createMap()
             break
             
         print("\nMap set.\n")
@@ -107,6 +89,7 @@ class GameMap:
                     # Validate the input
                     height = validate_positive_integer_input(height_input)
                     self.map.setHeight(height)
+                    self.map.createMap()
                 except ValueError as e:
                     print(f"\nInvalid input: {e}\n")
                     continue
@@ -123,6 +106,7 @@ class GameMap:
                     # Validate the input
                     width = validate_positive_integer_input(width_input)
                     self.map.setWidth(width)
+                    self.map.createMap()
                 except ValueError as e:
                     print(f"\nInvalid input: {e}\n")
                     continue
@@ -137,5 +121,10 @@ class GameMap:
                 print("Please, choose a relevant number." + "\n")
                 continue
             
-    def pointInMap(self, point):
-        return True
+    
+    def is_point_on_map(self, point):
+        if (self.map.lowerLeft[0] < point.x < self.map.upperRight[0]) \
+            and (self.map.lowerLeft[1] < point.y < self.map.upperRight[1]):
+                return True
+        else:
+            return False
