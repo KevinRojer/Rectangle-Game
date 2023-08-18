@@ -17,7 +17,7 @@ class Rectangle:
         self.upperRight = None
         
         
-    def createMap(self, startX, startY):
+    def createMap(self):
         """
         Create a map using the given coordinates as the lower-left corner
 
@@ -33,11 +33,8 @@ class Rectangle:
         None.
 
         """
-        if (isinstance(startX, int) and isinstance(startY, int)):
-            self.lowerLeft = (startX, startY)
-            self.upperRight = (startX + self.width, startY + self.height)
-        else:
-            raise ValueError("Invalid input for coordinates.")
+        self.lowerLeft = (0, 0)
+        self.upperRight = (self.width, self.height)
             
     
     def setWidth(self, width):
