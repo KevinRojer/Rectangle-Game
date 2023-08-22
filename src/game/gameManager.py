@@ -8,9 +8,11 @@ Created on Fri Aug 18 17:12:39 2023
 
 
 import random
+import src.tools.display as display
 from src.maps.GameMap import GameMap
 from src.tools.utility import validate_positive_integer_input
 from src.dataStructure.point import Point
+
 
 
 class GameManager():
@@ -23,7 +25,7 @@ class GameManager():
         self.targets = []
         
         
-    def initialize_map(self):
+    def start_game(self):
 
         self.map.initializeMap()
         self._place_targets()
@@ -49,7 +51,7 @@ class GameManager():
             target = Point(target_x, target_y)
             self.targets.append(target)
             
-            print(f"x: {target_x} ; y: {target_y}")
+            # print(f"x: {target_x} ; y: {target_y}")
     
     
     def get_map_dimensions(self):
@@ -60,28 +62,36 @@ class GameManager():
         
         for tg in self.targets:
             if (point.x == tg.x) and (point.y == tg.y):
-                print("Success. Target hit!")
+                display.show_target_hit()
             else:
-                print("Target missed. Please, try again.")
+                display.show_target_missed()
         
         
-    def select_target(self):
+    def play_game(self):
         
-        x_input = input("Please, select your target's x-coordinate: ")
-        x_coordinate = validate_positive_integer_input(x_input)
-        
-        y_input = input("Please, select your target's y-coordinate: ")
-        y_coordinate = validate_positive_integer_input(y_input)
+        x_coordinate = self._get_coordinate("x")
+        y_coordinate = self._get_coordinate("y")
         
         target = Point(x_coordinate, y_coordinate)
-        
+                
         if (self._validate_target(target)):
             self.check_for_hits(target)
         else:
-            print("Target outside of map")
+            display.show_input_out_of_map()
+                    
+                    
+    def _get_coordinate(self, dimension):
+        
+        while True:
+            input_str = display.prompt_target_input(dimension)
+            try:
+                coordinate = validate_positive_integer_input(input_str)
+                return coordinate
+            except ValueError as e:
+                display.show_invalid_input(e)
             
             
     def exit_game(self):
-        print("\nExiting game...")
+       display.show_closing_application_message()
             
             
