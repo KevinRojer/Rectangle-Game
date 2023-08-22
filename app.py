@@ -14,9 +14,9 @@ import src.tools.display as display
 
 
 def main():
-    # initialize the game manager & map
+    # initialize the game manager
     gameManager = GameManager()
-    gameManager.initialize_map()
+    gameManager.start_game()
     
     while (True):
         display.show_main_menu()
@@ -24,7 +24,7 @@ def main():
         choice = input("Please, make a selection: ")
 
         if (choice == "1"):
-            gameManager.select_target()
+            gameManager.play_game()
             continue
         elif (choice == "2"):
             gameManager.update_map()
