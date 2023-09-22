@@ -17,9 +17,9 @@ class Rectangle:
         self.upperRight = None
         
         
-    def createMap(self):
+    def createRectangle(self):
         """
-        Create a map using the given coordinates as the lower-left corner
+        Create a rectangle using the given coordinates as the lower-left corner
 
         Parameters
         ----------
@@ -90,9 +90,9 @@ class Rectangle:
             return False
         
         
-    def getMapSize(self):
+    def getRectangleSize(self):
         """
-        Print the size of the map.
+        Print the size of the rectangle.
 
         """
         print(f"Map size is W {self.width} x H {self.height} grid.")
