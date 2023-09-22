@@ -9,7 +9,7 @@ Created on Fri Aug 18 17:12:39 2023
 
 import random
 import src.tools.display as display
-from src.maps.GameMap import GameMap
+from src.maps.gameMap import GameMap
 from src.tools.utility import validate_positive_integer_input
 from src.dataStructure.point import Point
 
@@ -55,7 +55,7 @@ class GameManager():
     
     
     def get_map_dimensions(self):
-        self.map.map.getMapSize()
+        self.map.map.getRectangleSize()
         
         
     def check_for_hits(self, point):
