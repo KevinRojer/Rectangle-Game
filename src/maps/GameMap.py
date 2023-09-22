@@ -51,7 +51,7 @@ class GameMap:
                 
             # Initialize the map
             self.map = Rectangle(width, height)
-            self.map.createMap()
+            self.map.createRectangle()
             break
             
         print("\nMap set.\n")
@@ -79,7 +79,7 @@ class GameMap:
                 
             if (choice == 1):
                 self.initializeMap()
-                self.map.getMapSize()
+                self.map.getRectangleSize()
                 break
             
             elif (choice == 2):
@@ -89,14 +89,14 @@ class GameMap:
                     # Validate the input
                     height = validate_positive_integer_input(height_input)
                     self.map.setHeight(height)
-                    self.map.createMap()
+                    self.map.createRectangle()
                 except ValueError as e:
                     print(f"\nInvalid input: {e}\n")
                     continue
                 
                 
                 print("\nChanged the height.")
-                self.map.getMapSize()
+                self.map.getRectangleSize()
                 break
             
             elif (choice == 3):
@@ -106,13 +106,13 @@ class GameMap:
                     # Validate the input
                     width = validate_positive_integer_input(width_input)
                     self.map.setWidth(width)
-                    self.map.createMap()
+                    self.map.createRectangle()
                 except ValueError as e:
                     print(f"\nInvalid input: {e}\n")
                     continue
                 
                 print("\nChanged the width.")
-                self.map.getMapSize()
+                self.map.getRectangleSize()
                 break
             
             elif (choice == 4):
