@@ -7,17 +7,20 @@ Created on Mon Jul 31 20:28:38 2023
 """
 
 
+from src.dataStructure.point import Point
+
+
 class Rectangle:
     """A class representing a rectangle"""
     
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.lowerLeft = None
-        self.upperRight = None
+        self.lowerLeft = Point(0,0)
+        self.upperRight = Point(width, height)
         
         
-    def createRectangle(self):
+    def setRectangle(self):
         """
         Create a rectangle using the given coordinates as the lower-left corner
 
@@ -92,9 +95,9 @@ class Rectangle:
         
     def getRectangleSize(self):
         """
-        Print the size of the rectangle.
+        Get the size of the rectangle.
 
         """
-        print(f"Map size is W {self.width} x H {self.height} grid.")
+        return f"W {self.width} x H {self.height}"
         
     
