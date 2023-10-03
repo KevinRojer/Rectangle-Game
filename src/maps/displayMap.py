@@ -7,11 +7,17 @@ Created on Fri Sep 22 19:02:19 2023
 """
 
 
-import turtle
 from src.dataStructure.rectangle import Rectangle
 
-class GuiMap(Rectangle):
+
+class Map(Rectangle):
     
     
-    def draw(self, canvas):
-        pass
+    def __init__(self, name, width, height):
+        super.__init__(width, height)
+        self.name = name
+        
+        
+    def describeMap(self):
+        print(f"Map: {self.name} - W:{self.width} x H:{self.height}.")
+    
