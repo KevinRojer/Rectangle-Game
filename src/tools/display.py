@@ -7,6 +7,9 @@ Created on Fri Aug 18 18:18:35 2023
 """
 
 
+from src.maps.availableMaps import MAPS
+
+
 def show_main_menu():
     print()
     print(" "*10 + "Menu" + " "*10)
@@ -47,3 +50,12 @@ def show_target_hit():
     
 def show_input_out_of_map():
     print("\nInput error: Selected target is outside of the map.\n")
+    
+    
+def show_map_menu():
+    print()
+    print(" "*10 + "Please, choose a map" + " "*10)
+    print("-"*25)
+    for i, m in enumerate(MAPS):
+        print("{i}. {m.name}")
+    print()
